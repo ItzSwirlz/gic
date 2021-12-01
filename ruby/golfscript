@@ -569,3 +569,16 @@ var 'base', 'gpush b.base(a)'.cc2
 code.compile.go
 gpush Garray.new($stack)
 'puts'.compile.go
+
+
+# REPL
+while code != "quit\n"
+  if code == "clear\n"
+    $stack = []
+  end
+  code.compile.go
+  gpush Garray.new($stack)
+  'puts'.compile.go
+  print ">>> "
+  code = gets
+end
